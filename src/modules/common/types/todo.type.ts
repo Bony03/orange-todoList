@@ -1,5 +1,5 @@
 export type ITodo = {
-  id: string;
+  _id: string;
   title: string;
   discription: string;
   isPrivate: boolean;

@@ -22,7 +22,7 @@ export function DeskButtonGroupComponent({ data, client, alert }: IDataClientAle
           color={COLORS.primary}
           margin
           clickHandler={() => {
-            navigate(`/${data.id}`);
+            navigate(`/${data._id}`);
           }}
         />
         <ButtonComponent
@@ -31,7 +31,7 @@ export function DeskButtonGroupComponent({ data, client, alert }: IDataClientAle
           color={COLORS.secondary}
           margin
           clickHandler={() => {
-            deleteTodo(data.id);
+            deleteTodo(data._id);
           }}
         />
       </div>

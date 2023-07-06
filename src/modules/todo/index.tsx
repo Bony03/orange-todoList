@@ -13,8 +13,10 @@ export default function TodoPageContainer() {
   const client = useQueryClient();
   const location = useLocation();
   const alert = useAlert();
-  const v4 = /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
-  const id = location.pathname.split('/')[1].match(v4) ? location.pathname.split('/')[1] : false;
+  const objectId = /^[0-9a-fA-F]{24}$/i;
+  const id = location.pathname.split('/')[1].match(objectId)
+    ? location.pathname.split('/')[1]
+    : false;
   if (!id) {
     return (
       <>

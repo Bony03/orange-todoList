@@ -57,12 +57,11 @@ export const TabListContainer = ({
           }}
         >
           {data.map((item: ITodo) => (
-            <SwiperSlide key={item.id}>
+            <SwiperSlide key={item._id}>
               <TodoItemComponent
                 data={item}
                 alert={alert}
                 client={client}
-                key={item.id}
                 setReplaceState={setReplaceState}
               />
             </SwiperSlide>

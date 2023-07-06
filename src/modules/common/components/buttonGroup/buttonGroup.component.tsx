@@ -22,7 +22,7 @@ export function ButtonGroupComponent({ data, client, alert, setReplaceState }: I
           color={COLORS.primary}
           margin
           clickHandler={() => {
-            navigate(`/${data.id}`);
+            navigate(`/${data._id}`);
           }}
         />
         <ButtonComponent
@@ -32,7 +32,7 @@ export function ButtonGroupComponent({ data, client, alert, setReplaceState }: I
           margin
           clickHandler={() => {
             setReplaceState(true);
-            deleteTodo(data.id);
+            deleteTodo(data._id);
           }}
         />
       </div>

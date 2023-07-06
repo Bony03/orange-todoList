@@ -50,13 +50,12 @@ export const MobListContainer = ({
               backgroundColor: `${COLORS.white}8c`
             }}
             transition={{ duration: 1, delay: index * 0.05 }}
-            key={item.id}
+            key={item._id}
           >
             <MobTodoItemComponent
               data={item}
               client={client}
               alert={alert}
-              key={item.id}
               index={index}
               setPage={setPage}
               page={page}

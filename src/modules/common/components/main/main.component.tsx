@@ -49,7 +49,7 @@ export const MainComponent = ({
         JSON.stringify(filteredData) ===
         JSON.stringify(
           mobList
-            .map((item) => filteredData.find((itemData) => itemData.id === item.id))
+            .map((item) => filteredData.find((itemData) => itemData._id === item._id))
             .filter((item) => item !== undefined)
         );
       if (isEqualExistArray) {

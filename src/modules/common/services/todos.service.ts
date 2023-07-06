@@ -43,7 +43,7 @@ class TodosService extends HttpService {
 
   async updateTodo(todoData: ITodo) {
     const { data } = await this.put<ITodoResponse>({
-      url: `${BACKEND_KEYS.TODOS}/${todoData.id}`,
+      url: `${BACKEND_KEYS.TODOS}/${todoData._id}`,
       data: {
         data: {
           ...todoData

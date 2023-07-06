@@ -14,15 +14,18 @@ import { DeskButtonGroupComponent } from '../buttonGroup/deskButtonGroup';
 import { TableStyled } from './table.styled';
 
 function pushNTimes(n: number, data: ITodo[], client: QueryClient, alert: IAlert) {
-  const elemArray = data.map((item) => (
-    <TableRow key={item.id}>
-      <TableCell width={150}>{item.title}</TableCell>
-      <TableCell>{item.discription}</TableCell>
-      <TableCell width={312}>
-        <DeskButtonGroupComponent data={item} client={client} alert={alert} />
-      </TableCell>
-    </TableRow>
-  ));
+  const elemArray = data.map((item) => {
+    console.log(item);
+    return (
+      <TableRow key={item._id}>
+        <TableCell width={150}>{item.title}</TableCell>
+        <TableCell>{item.discription}</TableCell>
+        <TableCell width={312}>
+          <DeskButtonGroupComponent data={item} client={client} alert={alert} />
+        </TableCell>
+      </TableRow>
+    );
+  });
 
   for (let i = 0; i < n; i += 1) {
     elemArray.push(
