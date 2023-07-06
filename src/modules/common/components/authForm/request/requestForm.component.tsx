@@ -1,19 +1,24 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
-import { Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { Formik } from 'formik';
+import React from "react";
+import { Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Formik } from "formik";
 
-import { ROUTER_KEYS } from '../../../consts/app-keys.const';
-import { useRequestPassLink } from '../../../hooks/useUsersQuery';
-import { useAlert } from '../../../hooks/useAlert';
-import { ResetSchema } from './schema';
-import { initialValues } from './initialValue';
+import { ROUTER_KEYS } from "../../../consts/app-keys.const";
+import { useRequestPassLink } from "../../../hooks/useUsersQuery";
+import { useAlert } from "../../../hooks/useAlert";
+import { ResetSchema } from "./schema";
+import { initialValues } from "./initialValue";
 
-import { AuthForm, AuthContainer, ButtonGroup, BackLink, FloatInput } from '../form.styled';
-import { ButtonComponent } from '../../button';
-import { COLORS } from '../../../../theme';
-import { AlertComponent } from '../../alert';
+import {
+  AuthForm,
+  AuthContainer,
+  ButtonGroup,
+  BackLink,
+  FloatInput,
+} from "../form.styled";
+import { ButtonComponent } from "../../button";
+import { COLORS } from "../../../../theme";
+import { AlertComponent } from "../../alert";
 
 export const RequestFormComponent = () => {
   const alert = useAlert();
@@ -76,7 +81,11 @@ export const RequestFormComponent = () => {
                     />
                   </svg>
                 </BackLink>
-                <ButtonComponent type="submit" text="Submit" color={COLORS.primary} />
+                <ButtonComponent
+                  type="submit"
+                  text="Submit"
+                  color={COLORS.primary}
+                />
               </ButtonGroup>
             </form>
           )}

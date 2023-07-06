@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { STORAGE_KEYS } from '../consts/app-keys.const';
+import axios from "axios";
+import { STORAGE_KEYS } from "../consts/app-keys.const";
 
 type IConfig = {
   url: string;
@@ -16,9 +16,8 @@ export class HttpService {
 
   constructor(
     baseUrl: string | undefined,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     fetchingService: any = axios,
-    apiVersion: string = 'api'
+    apiVersion: string = "api"
   ) {
     this.baseUrl = baseUrl;
     this.fetchingService = axios;
@@ -31,7 +30,7 @@ export class HttpService {
 
   private setTokenHeader() {
     return {
-      Authorization: localStorage.getItem(STORAGE_KEYS.TOKEN)
+      Authorization: localStorage.getItem(STORAGE_KEYS.TOKEN),
     };
   }
 
@@ -44,18 +43,21 @@ export class HttpService {
     if (withAuth) {
       config.headers = {
         ...config.headers,
-        ...this.setTokenHeader()
+        ...this.setTokenHeader(),
       };
     }
 
-    return this.fetchingService.get(this.getFullApiUrl(config.url), this.getConfigsHeaders(config));
+    return this.fetchingService.get(
+      this.getFullApiUrl(config.url),
+      this.getConfigsHeaders(config)
+    );
   }
 
   put<T>(config: IConfig, withAuth = true): Promise<T> {
     if (withAuth) {
       config.headers = {
         ...config.headers,
-        ...this.setTokenHeader()
+        ...this.setTokenHeader(),
       };
     }
     return this.fetchingService.put(
@@ -69,7 +71,7 @@ export class HttpService {
     if (withAuth) {
       config.headers = {
         ...config.headers,
-        ...this.setTokenHeader()
+        ...this.setTokenHeader(),
       };
     }
     return this.fetchingService.post(
@@ -83,7 +85,7 @@ export class HttpService {
     if (withAuth) {
       config.headers = {
         ...config.headers,
-        ...this.setTokenHeader()
+        ...this.setTokenHeader(),
       };
     }
     return this.fetchingService.delete(

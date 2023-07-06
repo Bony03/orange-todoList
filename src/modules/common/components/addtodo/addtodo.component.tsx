@@ -1,33 +1,41 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
-import { Formik } from 'formik';
-import { Typography } from '@mui/material';
-import * as Yup from 'yup';
-import { motion } from 'framer-motion';
+import React from "react";
+import { Formik } from "formik";
+import { Typography } from "@mui/material";
+import * as Yup from "yup";
+import { motion } from "framer-motion";
 
-import { useCreateTodo } from '../../hooks/useTodosQuery';
-import { IInitialTodo } from '../../types/todo.type';
-import { IAddTodoProps } from '../../types/component.type';
-import { ButtonComponent } from '../button';
-import { COLORS } from '../../../theme';
-import { AddTodoStyled, FloatInput, CheckBoxInput, Success } from './addtodo.styled';
-import success from '../../../../assets/image/success.svg';
+import { useCreateTodo } from "../../hooks/useTodosQuery";
+import { IInitialTodo } from "../../types/todo.type";
+import { IAddTodoProps } from "../../types/component.type";
+import { ButtonComponent } from "../button";
+import { COLORS } from "../../../theme";
+import {
+  AddTodoStyled,
+  FloatInput,
+  CheckBoxInput,
+  Success,
+} from "./addtodo.styled";
+import success from "../../../../assets/image/success.svg";
 
-export const AddTodoComponent = ({ client, alert, closeHandler }: IAddTodoProps) => {
+export const AddTodoComponent = ({
+  client,
+  alert,
+  closeHandler,
+}: IAddTodoProps) => {
   const { mutate: createTodo, isSuccess } = useCreateTodo(client, alert);
   const initialValues: IInitialTodo = {
-    title: '',
-    discription: '',
+    title: "",
+    discription: "",
     isPrivate: false,
-    completed: false
+    completed: false,
   };
   const SignupSchema = Yup.object().shape({
     title: Yup.string()
-      .min(2, 'Title should contains at least 2 chapters!')
-      .required('Title is required'),
+      .min(2, "Title should contains at least 2 chapters!")
+      .required("Title is required"),
     discription: Yup.string()
-      .min(10, 'Discription should contains at least 10 chapters!')
-      .required('Discription is required')
+      .min(10, "Discription should contains at least 10 chapters!")
+      .required("Discription is required"),
   });
 
   return (
@@ -73,12 +81,22 @@ export const AddTodoComponent = ({ client, alert, closeHandler }: IAddTodoProps)
             </FloatInput>
             <CheckBoxInput>
               <label htmlFor="completed">Completed</label>
-              <input type="checkbox" name="completed" id="completed" onChange={handleChange} />
+              <input
+                type="checkbox"
+                name="completed"
+                id="completed"
+                onChange={handleChange}
+              />
               <span />
             </CheckBoxInput>
             <CheckBoxInput>
               <label htmlFor="isPrivate">Private</label>
-              <input type="checkbox" name="isPrivate" id="isPrivate" onChange={handleChange} />
+              <input
+                type="checkbox"
+                name="isPrivate"
+                id="isPrivate"
+                onChange={handleChange}
+              />
               <span />
             </CheckBoxInput>
 

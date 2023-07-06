@@ -1,14 +1,13 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
-import { Typography } from '@mui/material';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Formik } from 'formik';
+import React, { useState } from "react";
+import { Typography } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Formik } from "formik";
 
-import { ROUTER_KEYS } from '../../../consts/app-keys.const';
-import { useRegister } from '../../../hooks/useUsersQuery';
-import { useAlert } from '../../../hooks/useAlert';
-import { initialValues } from './initialValue';
-import { SignupSchema } from './schema';
+import { ROUTER_KEYS } from "../../../consts/app-keys.const";
+import { useRegister } from "../../../hooks/useUsersQuery";
+import { useAlert } from "../../../hooks/useAlert";
+import { initialValues } from "./initialValue";
+import { SignupSchema } from "./schema";
 
 import {
   AuthForm,
@@ -16,14 +15,14 @@ import {
   Success,
   ButtonGroup,
   BackLink,
-  FloatInput
-} from '../form.styled';
-import { ButtonComponent } from '../../button';
-import success from '../../../../../assets/image/success.svg';
-import eye from '../../../../../assets/image/eye.png';
-import closedEye from '../../../../../assets/image/closedEye.png';
-import { COLORS } from '../../../../theme';
-import { AlertComponent } from '../../alert';
+  FloatInput,
+} from "../form.styled";
+import { ButtonComponent } from "../../button";
+import success from "../../../../../assets/image/success.svg";
+import eye from "../../../../../assets/image/eye.png";
+import closedEye from "../../../../../assets/image/closedEye.png";
+import { COLORS } from "../../../../theme";
+import { AlertComponent } from "../../alert";
 
 export const RegisterFormComponent = () => {
   const alert = useAlert();
@@ -84,7 +83,7 @@ export const RegisterFormComponent = () => {
               </FloatInput>
               <FloatInput value={values.password}>
                 <input
-                  type={visible ? 'text' : 'password'}
+                  type={visible ? "text" : "password"}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
@@ -98,7 +97,11 @@ export const RegisterFormComponent = () => {
                     setVisible(!visible);
                   }}
                 >
-                  {visible ? <img src={closedEye} alt="Closed eye" /> : <img src={eye} alt="Eye" />}
+                  {visible ? (
+                    <img src={closedEye} alt="Closed eye" />
+                  ) : (
+                    <img src={eye} alt="Eye" />
+                  )}
                 </button>
                 {errors.password && <div>{errors.password}</div>}
               </FloatInput>
@@ -123,7 +126,11 @@ export const RegisterFormComponent = () => {
                     />
                   </svg>
                 </BackLink>
-                <ButtonComponent type="submit" text="Register" color={COLORS.primary} />
+                <ButtonComponent
+                  type="submit"
+                  text="Register"
+                  color={COLORS.primary}
+                />
               </ButtonGroup>
             </form>
           )}

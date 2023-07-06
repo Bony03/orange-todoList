@@ -1,25 +1,33 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
-import { Typography } from '@mui/material';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Formik } from 'formik';
+import React, { useState } from "react";
+import { Typography } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Formik } from "formik";
 
-import { ROUTER_KEYS, STORAGE_KEYS } from '../../../consts/app-keys.const';
-import { useRestorePass } from '../../../hooks/useUsersQuery';
-import { useAlert } from '../../../hooks/useAlert';
-import { ResetSchema } from './schema';
-import { initialValues, initialVisibilityState } from './initialValue';
+import { ROUTER_KEYS, STORAGE_KEYS } from "../../../consts/app-keys.const";
+import { useRestorePass } from "../../../hooks/useUsersQuery";
+import { useAlert } from "../../../hooks/useAlert";
+import { ResetSchema } from "./schema";
+import { initialValues, initialVisibilityState } from "./initialValue";
 
-import { AuthForm, AuthContainer, ButtonGroup, BackLink, FloatInput } from '../form.styled';
-import { ButtonComponent } from '../../button';
-import eye from '../../../../../assets/image/eye.png';
-import closedEye from '../../../../../assets/image/closedEye.png';
-import { COLORS } from '../../../../theme';
-import { AlertComponent } from '../../alert';
+import {
+  AuthForm,
+  AuthContainer,
+  ButtonGroup,
+  BackLink,
+  FloatInput,
+} from "../form.styled";
+import { ButtonComponent } from "../../button";
+import eye from "../../../../../assets/image/eye.png";
+import closedEye from "../../../../../assets/image/closedEye.png";
+import { COLORS } from "../../../../theme";
+import { AlertComponent } from "../../alert";
 
 export const RestoreFormComponent = () => {
   const location = useLocation();
-  localStorage.setItem(STORAGE_KEYS.TOKEN, `Bearer ${location.pathname.split('/')[3]}`);
+  localStorage.setItem(
+    STORAGE_KEYS.TOKEN,
+    `Bearer ${location.pathname.split("/")[3]}`
+  );
   const [visible, setVisible] = useState(initialVisibilityState);
   const alert = useAlert();
   const { mutate: restore } = useRestorePass(alert);
@@ -48,7 +56,7 @@ export const RestoreFormComponent = () => {
             <form onSubmit={handleSubmit}>
               <FloatInput value={values.password}>
                 <input
-                  type={visible.newPassword ? 'text' : 'password'}
+                  type={visible.newPassword ? "text" : "password"}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.password}
@@ -59,7 +67,10 @@ export const RestoreFormComponent = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    setVisible({ ...visible, newPassword: !visible.newPassword });
+                    setVisible({
+                      ...visible,
+                      newPassword: !visible.newPassword,
+                    });
                   }}
                 >
                   {visible.newPassword ? (
@@ -72,7 +83,7 @@ export const RestoreFormComponent = () => {
               </FloatInput>
               <FloatInput value={values.confirmPassword}>
                 <input
-                  type={visible.confirmPassword ? 'text' : 'password'}
+                  type={visible.confirmPassword ? "text" : "password"}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.confirmPassword}
@@ -83,7 +94,10 @@ export const RestoreFormComponent = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    setVisible({ ...visible, confirmPassword: !visible.confirmPassword });
+                    setVisible({
+                      ...visible,
+                      confirmPassword: !visible.confirmPassword,
+                    });
                   }}
                 >
                   {visible.confirmPassword ? (
@@ -116,7 +130,11 @@ export const RestoreFormComponent = () => {
                     />
                   </svg>
                 </BackLink>
-                <ButtonComponent type="submit" text="Submit" color={COLORS.primary} />
+                <ButtonComponent
+                  type="submit"
+                  text="Submit"
+                  color={COLORS.primary}
+                />
               </ButtonGroup>
             </form>
           )}

@@ -1,23 +1,22 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
-import { Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { Formik } from 'formik';
+import React, { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Formik } from "formik";
 
-import { ROUTER_KEYS } from '../../consts/app-keys.const';
-import { SignupSchema } from './schema';
-import { initialValues, initialVisibilityState } from './initialValues';
-import { useChangePass, useGetUserData } from '../../hooks/useUsersQuery';
-import { useAlert } from '../../hooks/useAlert';
+import { ROUTER_KEYS } from "../../consts/app-keys.const";
+import { SignupSchema } from "./schema";
+import { initialValues, initialVisibilityState } from "./initialValues";
+import { useChangePass, useGetUserData } from "../../hooks/useUsersQuery";
+import { useAlert } from "../../hooks/useAlert";
 
-import { AlertComponent } from '../alert';
-import { AuthContainer, BackLink, ButtonGroup, FloatInput } from '../authForm';
-import { COLORS } from '../../../theme';
-import { ButtonComponent } from '../button';
-import { ProfileForm } from './profile.styled';
-import closedEye from '../../../../assets/image/closedEye.png';
-import eye from '../../../../assets/image/eye.png';
+import { AlertComponent } from "../alert";
+import { AuthContainer, BackLink, ButtonGroup, FloatInput } from "../authForm";
+import { COLORS } from "../../../theme";
+import { ButtonComponent } from "../button";
+import { ProfileForm } from "./profile.styled";
+import closedEye from "../../../../assets/image/closedEye.png";
+import eye from "../../../../assets/image/eye.png";
 
 export const ProfileComponent = () => {
   const alert = useAlert();
@@ -54,7 +53,10 @@ export const ProfileComponent = () => {
               email: <span>{data.data.email}</span>
             </Typography>
             <Typography variant="body1">
-              activated: <span>{data.data.isActivated ? 'activated' : 'not activated'}</span>
+              activated:{" "}
+              <span>
+                {data.data.isActivated ? "activated" : "not activated"}
+              </span>
             </Typography>
           </>
         )}
@@ -63,7 +65,10 @@ export const ProfileComponent = () => {
           initialValues={initialValues}
           validationSchema={SignupSchema}
           onSubmit={(values, { setValues }) => {
-            changePass({ oldPassword: values.oldPassword, newPassword: values.confirmPassword });
+            changePass({
+              oldPassword: values.oldPassword,
+              newPassword: values.confirmPassword,
+            });
             setValues(initialValues);
           }}
         >
@@ -71,7 +76,7 @@ export const ProfileComponent = () => {
             <form onSubmit={handleSubmit}>
               <FloatInput value={values.oldPassword}>
                 <input
-                  type={visible.oldPassword ? 'text' : 'password'}
+                  type={visible.oldPassword ? "text" : "password"}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.oldPassword}
@@ -83,7 +88,10 @@ export const ProfileComponent = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    setVisible({ ...visible, oldPassword: !visible.oldPassword });
+                    setVisible({
+                      ...visible,
+                      oldPassword: !visible.oldPassword,
+                    });
                   }}
                 >
                   {visible.oldPassword ? (
@@ -96,7 +104,7 @@ export const ProfileComponent = () => {
               </FloatInput>
               <FloatInput value={values.newPassword}>
                 <input
-                  type={visible.newPassword ? 'text' : 'password'}
+                  type={visible.newPassword ? "text" : "password"}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.newPassword}
@@ -108,7 +116,10 @@ export const ProfileComponent = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    setVisible({ ...visible, newPassword: !visible.newPassword });
+                    setVisible({
+                      ...visible,
+                      newPassword: !visible.newPassword,
+                    });
                   }}
                 >
                   {visible.newPassword ? (
@@ -121,7 +132,7 @@ export const ProfileComponent = () => {
               </FloatInput>
               <FloatInput value={values.confirmPassword}>
                 <input
-                  type={visible.confirmPassword ? 'text' : 'password'}
+                  type={visible.confirmPassword ? "text" : "password"}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.confirmPassword}
@@ -133,7 +144,10 @@ export const ProfileComponent = () => {
                 <button
                   type="button"
                   onClick={() => {
-                    setVisible({ ...visible, confirmPassword: !visible.confirmPassword });
+                    setVisible({
+                      ...visible,
+                      confirmPassword: !visible.confirmPassword,
+                    });
                   }}
                 >
                   {visible.confirmPassword ? (
@@ -165,7 +179,11 @@ export const ProfileComponent = () => {
                     />
                   </svg>
                 </BackLink>
-                <ButtonComponent type="submit" text="Change" color={COLORS.primary} />
+                <ButtonComponent
+                  type="submit"
+                  text="Change"
+                  color={COLORS.primary}
+                />
               </ButtonGroup>
             </form>
           )}
