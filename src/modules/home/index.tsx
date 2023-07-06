@@ -55,19 +55,21 @@ export default function HomePageContainer() {
       />
 
       {openModal && (
-        <Portal
-          onClose={() => {
-            setOpenModal(false);
-          }}
-        >
-          <AddTodoComponent
-            closeHandler={() => {
+        <React.Fragment>
+          <Portal
+            onClose={() => {
               setOpenModal(false);
             }}
-            client={client}
-            alert={alert}
-          />
-        </Portal>
+          >
+            <AddTodoComponent
+              closeHandler={() => {
+                setOpenModal(false);
+              }}
+              client={client}
+              alert={alert}
+            />
+          </Portal>
+        </React.Fragment>
       )}
     </>
   );

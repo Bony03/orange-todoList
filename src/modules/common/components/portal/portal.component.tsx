@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 import { ModalContainer, PortalStyled } from './portal.styled';
 import cross from '../../../../assets/image/cross.svg';
@@ -22,4 +22,5 @@ export const Portal = ({ children, onClose }: IPortal) => {
       portal
     );
   }
+  return null;
 };

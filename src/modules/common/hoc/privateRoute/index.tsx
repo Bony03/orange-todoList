@@ -5,7 +5,7 @@ import { useCheckToken } from '../../hooks/useUsersQuery';
 import { LoadingComponent } from '../../components/loading';
 
 type IProps = {
-  children: ReactNode;
+  children: JSX.Element;
 };
 
 export const RequireAuth = ({ children }: IProps) => {
@@ -22,4 +22,5 @@ export const RequireAuth = ({ children }: IProps) => {
   if (isError) {
     return <Navigate to={ROUTER_KEYS.AUTHORIZATION} state={{ from: location.pathname }} />;
   }
+  return null;
 };
